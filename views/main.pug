@@ -1,0 +1,288 @@
+extends layout
+
+block content
+  .timeline
+    .homemenu
+      img.guideimg(src='/images/guide.png' alt='chat guide')
+  p
+  #slider
+    .item(onclick="window.open(`http://www.cku.ac.kr`)" style='cursor:pointer;')
+    .item(onclick="window.open(`http://www.cku.ac.kr`)" style='cursor:pointer;')
+    .item(onclick="window.open(`http://www.cku.ac.kr`)" style='cursor:pointer;')
+  .button-box
+    a(href='#' onclick='slider.prev()')
+      i.fa.fa-chevron-left
+    a(href='#' onclick='slider.next()')
+      i.fa.fa-chevron-right
+    a(href='#' onclick='slider.auto()')
+      i.fa.fa-play
+    a(href='#' onclick='slider.stop()')
+      i.fa.fa-stop
+  script(src='js/roll.js')
+  if user
+    .chat-bar
+      button#chat-button.collapsible(type='button') 가톨릭관동대학교
+        i#chat-icon.fa.fa-fw.fa-comments-o(style='color: #fff;')
+      .content
+        .full-chat-block
+          .outer-container
+            .chat-container
+              #chatbox
+                h5#chat-timestamp
+                p#botStarterMessage.botText
+                  span Loading...
+              .chat-bar-input-block
+                #userInput
+                  input#textInput.input-box(type='text' name='msg' placeholder='메시지를 입력하세요')
+                  p
+                script.
+                  $(function () {
+                    $("#textInput").autocomplete({
+                      source: List,
+                      focus : function(event, ui) {
+                        return false;
+                      },
+                      minLength: 1,
+                      delay: 100,
+                      position: { collision: 'flip' } //자동완성 위치 반응형
+                    });
+                  });
+                .chat-bar-icons
+                  i#chat-icon.fa.fa-bars(style='color: #333;' onclick='menuButton()')
+                  i#chat-icon.fa.fa-fw.fa-send(style='color: #333;' onclick='sendButton()')
+              #chat-bar-bottom
+                p
+    script(src='js/Chat.js')
+    script.
+      var name = `#{user.nick}`;
+      kk = newKk();
+      sw = kk[0];
+      arch = kk[1];
+      arche = kk[2];
+      civil = kk[3];
+      elec = kk[4];
+      mp = newMp();
+      ttyear = mp[0];
+      toyear = mp[1];
+      all = newAll();
+      calsel = all[0];
+      kkinfomenu = all[1];
+      phone = all[2];
+      menu = all[3];
+      facil = all[4];
+      depphone = newDepphone();
+      archep = depphone[0];
+      archp = depphone[1];
+      swp = depphone[2];
+      elecp = depphone[3];
+      civilp = depphone[4];
+      mainp = newMainphone();
+
+
+      function firstBotMessage() {
+        let firstMessage = `<p class="botText">
+                              <div  style="word-break: break-word;">
+                                ${name}님 안녕하세요!😊<br>이번 달의 주요 학사일정이에요!📆
+                              </div>
+                              <p></p>
+                              <div id='calendar'></div>
+                              <p></p>
+                              <div class="btn_group">
+                                <a class="btn_link" onclick='menuButton()'>챗봇 시작하기 💬</a>
+                              </div>
+                            </p>`
+        document.getElementById("botStarterMessage").innerHTML = `<span>${firstMessage}</span>`;
+        document.getElementById("userInput").scrollIntoView(false);
+      }
+      firstBotMessage();
+
+      function selectMonth(imsimonth) {
+        imsi = imsimonth;
+      }
+      function getBotResponse(input) {
+        //사용자정보
+        var dname = `#{user.dnick}`;
+        var depa = #{user.dcategory};
+        var year = #{user.uyear};
+        var grade = #{user.grade};
+        var kp = #{user.ascore};
+        var ks = #{user.bscore};
+        var jg = #{user.cscore};
+        var ib = #{user.dscore};
+        var tt = #{user.escore};
+        
+
+        if  (input == "menu") {
+          return `${menu}`;
+        }	
+        else if (input == "kkinfo") {
+          return `${kkinfomenu}`;
+        }
+        else if (input == "phoneinfo") {
+          return `${phone}`;
+        }
+        else if (input == "facilinfo") {
+          return `${facil}`;
+        }
+        else if (input == "달력선택") {
+          return `${calsel}`;
+        }
+        else if (input == "학사일정") {
+          switch(imsi) {
+            case 1 : return `${imsi}월 학사일정입니다.<br>`;
+              break;
+            case 2 : return `${imsi}월 학사일정입니다.<br>`;
+              break;
+            case 3 : return `${imsi}월 학사일정입니다.<br>`;
+              break;
+            case 4 : return `${imsi}월 학사일정입니다.<br>`;
+              break;
+            case 5 : return `${imsi}월 학사일정입니다.<br>05일 : 어린이날 [공휴일]<br>09일-13일 : 중간 성적 열람<br>30일-6월 3일 : 복수,부전공 신청`;
+              break;
+            case 6 : return `${imsi}월 학사일정입니다.<br>01일 : 지방선거 [공휴일]<br>06일 : 현충일 [공휴일]<br>08일-20일 : 보강 및 기말 고사<br>08일-24일 : 기말 성적 입력<br>20일 : 1학기 종강<br>27일-29일 : 하계 계절학기 성적 포기<br>27일 : 하계 계절학기 개강<br>27일-7월 1일 : 성적열람 및 이의신청`;
+              break;
+            case 7 : return `${imsi}월 학사일정입니다.<br>`;
+              break;
+            case 8 : return `${imsi}월 학사일정입니다.<br>`;
+              break;
+            case 9 : return `${imsi}월 학사일정입니다.<br>`;
+              break;
+            case 10 : return `${imsi}월 학사일정입니다.<br>`;
+              break;
+            case 11 : return `${imsi}월 학사일정입니다.<br>`;
+              break;
+            case 12 : return `${imsi}월 학사일정입니다.<br>`;
+              break;
+            default: window.open("https://www.cku.ac.kr/cku/428/subview.do","학사일정"); return ``;
+          }
+        }
+        //교육과정
+        else if (input == "교육과정") {
+          switch(dname)  {
+            case `소프트웨어` : return `${sw}`;
+              break;
+            case `건축` : return `${arch}`;
+              break;
+            case `전자공` : return `${elec}`;
+              break;
+            case `토목` : return `${civil}`;
+              break;
+            case `건축공` : return `${arche}`;
+              break;
+            default: return `준비 중인 학과 교육과정입니다.`;
+          }
+        }
+        else if (input == "소프트웨어학과 교육과정") {return `${sw}`;}
+        else if (input == "건축학부 교육과정") {return `${arch}`;}
+        else if (input == "전자공학과 교육과정") {return `${elec}`;}
+        else if (input == "토목공학과 교육과정") {return `${civil}`;}
+        else if (input == "건축공학과 교육과정") {return `${arche}`;}
+        //내 남은학점
+        else if (input == "남은학점") {
+          if (year == 2017) {
+            switch(depa)  {
+              case 0 : return `졸업까지 남은 학점은 교필 ${28-kp}점, 교선 ${8-ks}점, 전공 ${69-jg}점, 일선 ${25-ib}점, 총 ${130-tt}점 입니다.`;
+                break;
+              case 1 : return `졸업까지 남은 학점은 교필 ${28-kp}점, 교선 ${8-ks}점, 전공 ${106-jg}점, 일선 ${18-ib}점, 총 ${160-tt}점 입니다.`;
+                break;
+              default: return `잘못된 정보입니다.`;
+            }
+          } else if (year == 2018)  {
+              switch(depa)  {
+                case 0 : return `졸업까지 남은 학점은 교필 ${16-kp}점, 교선 ${20-ks}점, 전공 ${69-jg}점, 일선 ${25-ib}점, 총 ${130-tt}점 입니다.`;
+                  break;
+                case 1 : return `졸업까지 남은 학점은 교필 ${16-kp}점, 교선 ${20-ks}점, 전공 ${106-jg}점, 일선 ${18-ib}점, 총 ${160-tt}점 입니다.`;
+                  break;
+                default: return `잘못된 정보입니다.`;
+              }
+          } else {
+            return `${year}년도 ${dname}학과 졸업 정보가 아직 등록되지 않았습니다.`;
+          }
+        }
+        //이수학점
+        else if (input == "최소이수학점") {
+          switch(year)  {
+            case 2022 : return `${ttyear}`;
+              break;
+            case 2021 : return `${toyear}`;
+              break;
+            case 2020 : return `${tzyear}`;
+              break;
+            case 2019 : return `${onyear}`;
+              break;
+            case 2018 : return `${oeyear}`;
+              break;
+            case 2017 : return `${osyear}`;
+              break;
+            case 2016 : return `${osixyear}`;
+              break;
+            case 2015 : return `${ofyear}`;
+              break;
+            case 2014 : return `${ofouryear}`;
+              break;
+            case 2013 : return `${othreeyear}`;
+              break;
+            case 2012 : return `${otyear}`;
+              break;
+            case 2011 : return `${ooyear}`;
+              break;
+            case 2010 : return `${ozyear}`;
+              break;
+            case 2009 : return `${nyear}`;
+              break;
+            case 2008 : return `${eyear}`;
+              break;
+            default: return `해당 학번에 대한 정보는 교학처로 문의해주세요!`;
+          }
+        }
+        else if (input == "2022학번 이수학점") {return `${ttyear}`;}
+        else if (input == "2021학번 이수학점") {return `${toyear}`;}
+        else if (input == "2020학번 이수학점") {return `${tzyear}`;}
+        else if (input == "2019학번 이수학점") {return `${onyear}`;}
+        else if (input == "2018학번 이수학점") {return `${oeyear}`;}
+        else if (input == "2017학번 이수학점") {return `${osyear}`;}
+        else if (input == "2016학번 이수학점") {return `${osixyear}`;}
+        else if (input == "2015학번 이수학점") {return `${ofyear}`;}
+        else if (input == "2014학번 이수학점") {return `${ofouryear}`;}
+        else if (input == "2013학번 이수학점") {return `${othreeyear}`;}
+        else if (input == "2012학번 이수학점") {return `${otyear}`;}
+        else if (input == "2011학번 이수학점") {return `${ooyear}`;}
+        else if (input == "2010학번 이수학점") {return `${ozyear}`;}
+        else if (input == "2009학번 이수학점") {return `${nyear}`;}
+        else if (input == "2008학번 이수학점") {return `${eyear}`;}
+        //캠퍼스맵
+        else if (input == "캠퍼스맵") {
+          return `<div style="word-break: break-word;">
+                    캠퍼스맵이에요! 원하는 장소를 찾아보세요!
+                  </div>
+                  <p></p>
+                  <div class="btn_group">
+                    <img src="images/campusmap.jpg" width="400px" height="150px" image-rendering= "-webkit-optimize-contrast">
+                  </div>`;
+        }
+        //학과연락처
+        else if (input == "학과연락처") {
+          switch(dname)  {
+            case `소프트웨어` : return `${swp}`;
+              break;
+            case `건축` : return `${archp}`;
+              break;
+            case `전자공` : return `${elecp}`;
+              break;
+            case `토목` : return `${civilp}`;
+              break;
+            case `건축공` : return `${archep}`;
+              break;
+            default: return `준비 중인 학과 교육과정입니다.`;
+          }
+        }
+        else if (input == "소프트웨어학과 연락처") {return `${swp}`;}
+        else if (input == "건축학부 연락처") {return `${archep}`;}
+        else if (input == "전자공학과 연락처") {return `${elecp}`;}
+        else if (input == "토목공학과 연락처") {return `${civilp}`;}
+        else if (input == "건축공학과 연락처") {return `${archep}`;}
+        //주요 연락처
+        else if (input == "주요 연락처") {return `${mainp}`;}
+        //
+        else {return "잘 이해하지 못했어요. 질문을 확인해주세요";} 
+      }

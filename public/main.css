@@ -1,0 +1,504 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600);	
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 90%;
+  font-family: 'Open Sans';
+}
+
+.btn {
+  display: inline-block;
+  padding: 0 5px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+  background: white;
+  border: 1px solid silver;
+  color: #000;
+  height: 37px;
+  line-height: 37px;
+  vertical-align: top;
+  font-size: 12px;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+textarea {
+  border-radius: 4px;
+  height: 37px;
+  padding: 10px;
+  border: 1px solid silver;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (min-width: 800px) {
+  .container {
+    width: 800px;
+    margin: 0 auto;
+  }
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  width: 25%;
+  display: inline-block;
+}
+
+.input-group input {
+  width: 70%;
+}
+
+.half {
+  float: left;
+  width: 50%;
+  margin: 10px 0;
+}
+
+#join {
+  float: right;
+}
+
+.profile-wrap {
+  width: 97%;
+  display: inline-block;
+  vertical-align: top;
+  margin: 10px 10px 0px 10px;
+}
+
+@media screen and (min-width: 800px) {
+  .profile-wrap {
+    width: 280px;
+    margin-bottom: 0;
+  }
+}
+
+.profile {
+  text-align: left;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 4px;
+  border: 1px solid silver;
+  background: #006276;
+}
+
+.user-name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.count {
+  font-weight: bold;
+  color: #000;
+  font-size: 18px;
+}
+
+.timeline {
+  margin-top: 10px;
+  width: 100%;
+  display: inline-block;
+  border-radius: 10px;
+  vertical-align: top;
+}
+
+@media screen and (min-width: 800px) {
+  .timeline {
+    width: 500px;
+  }
+}
+
+.guideimg {
+  max-width: 100%;
+  max-height: 100%;
+  image-rendering: -webkit-optimize-contrast;
+}
+
+/*임시*/
+.homemenu {
+  border-radius: 4px;
+  padding: 5px;
+  position: relative;
+  margin-bottom: 10px;
+  text-align: center;
+
+  margin-right: 10px;
+  margin-left:10px;
+  border: 1px solid silver;
+  background: #006276;
+}
+/*임시*/
+
+.error-message {
+  color: #000;
+  font-weight: bold;
+}
+
+#join-form {
+  padding: 10px;
+  text-align: center;
+}
+
+
+/*챗봇*/
+.chat-bar {
+  position: absolute;
+  justify-content: center;
+  bottom: 0;
+  box-shadow: 0 8 16px 0 rgba(0, 0, 0.2);
+}
+
+/* 헤더부분 */
+.collapsible {
+  background-color: #006276;
+  color: #fff;
+  cursor: pointer;
+  padding: 18px;
+  width: 800px;
+  text-align: left;
+  outline: none;
+  font-size: 18px;
+  border-radius: 10px 10px 0px 0px;
+  border: 3px solid #fff;
+  border-bottom: none;
+}
+
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+
+.full-chat-block {
+  width: 800px;
+  background: #fff;
+  text-align: center;
+  overflow: auto;
+  height: max-content;
+  transition: max-height 0.2s ease-out;
+}
+
+.outer-container {
+  min-height: 500px;
+  bottom: 0%;
+  position: relative;
+}
+
+.chat-container {
+  max-height: 500px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  scroll-behavior: smooth;
+  hyphens: auto;
+}
+
+.chat-container::-webkit-scrollbar {
+  display: none;
+}
+
+.chat-bar-input-block {
+  display: flex;
+  float: left;
+  box-sizing: border-box;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  background-color: rgb(235, 235, 235);
+  border-radius: 10px 10px 0px 0px;
+  padding: 10px 0px 10px 10px;
+}
+
+.chat-bar-icons {
+  display: flex;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+  width: 25%;
+  float: right;
+  font-size: 20px;
+}
+
+.oneclick-icons {
+  display: flex;
+  justify-content: space-evenly;
+  box-sizing: border-box;
+  width: 50%;
+  float: right;
+  font-size: 16px;
+}
+
+#chat-icon:hover {
+  opacity: 7;
+  cursor: pointer;
+}
+
+/*말풍선*/
+#userInput {
+  width: 75%;
+}
+
+.input-box {
+  float: left;
+  border: none;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+  color: #000;
+  background-color: #fff;
+  outline: none;
+}
+
+.userText {
+  color: #fff;
+  font-family: Helvetica;
+  font-size: 16px;
+  font-weight: normal;
+  text-align: right;
+  clear: both;
+}
+/* 유저가 보내는 텍스트 */
+.userText span {
+  line-height: 1.5em;
+  display: inline-block;
+  background-color: #008299;
+  padding: 10px;
+  border-radius: 8px;
+  border-bottom-right-radius: 2px;
+  max-width: 80%;
+  margin-right: 100px 10 10 100;
+  animation: floatup 0.5s forwards;
+}
+
+.botText {
+  color: #000;
+  font-family: Helvetica;
+  font-weight: normal;
+  font-size: 16px;
+  text-align: left;
+}
+
+.botText span {
+  line-height: 1.5em;
+  display: inline-block;
+  background-color: #e0e0e0;
+  padding: 10px;
+  border-radius: 8px;
+  border-bottom-left-radius: 2px;
+  max-width: 80%;
+  margin-left: 10px;
+  animation: floatup 0.5s forwards;
+}
+
+/*챗봇메뉴선택버튼*/
+.btn_group {
+  margin-top: 5px
+}
+
+.btn_group .btn_link {
+  display: block;
+  min-width: 20px;
+  padding: 2px 0;
+  margin-bottom: 5px;
+  border-radius: 8px;
+  border: 1px solid #006276;
+  background-color: #fff;
+  box-sizing: border-box;
+  text-align: center;
+  color: #006276;
+  font-weight: 700
+}
+
+.btn_groupb {
+  margin-top: 5px
+}
+
+.btn_groupb .btn_linkb {
+  min-width: 234px;
+  padding: 14px 12;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  border: 1px solid #006276;
+  background-color: #fff;
+  box-sizing: border-box;
+  text-align: center;
+  color: #006276;
+  font-weight: 700
+}
+/*위 우 아래 좌*/
+/*챗봇테이블/슬라이더테이블*/
+.table {
+  table-layout:fixed;
+  width:100%;
+  text-align:center;
+}
+.table th { 
+  background:#006276;
+}
+.table td, .table th {
+  padding:0px 10px;
+  border-top:1px solid #ccc;
+  word-break:break-all
+}
+.table--min {
+  min-width:100px;
+  min-height:130px;
+}
+.table-box {
+  width: 560px;
+  height: 200px;
+  overflow:auto;
+}
+
+@media screen and (max-width:768px) {
+  /*normal*/
+  .table {
+    table-layout:fixed;
+    text-align:center;
+  }
+  .table-box {
+    width: 280px;
+    height: 200px;
+    overflow:auto;
+  }
+}
+/**/
+
+@keyframes floatup {
+  from {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .full-chat-block {
+    width: 100%;
+    border-radius: 0px;
+  }
+
+  .chat-bar {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  .collapsible {
+    width: 100%;
+    border: 0px;
+    border-top: 3px solid #fff;
+    border-radius: 0px;
+  }
+}
+
+/*롤링베너*/
+#slider {
+  height: 200px;
+  width: 100%;
+  border-radius: 10px 10px 10px 10px;
+  border: 3px solid #006276;
+}
+.item:nth-child(1) {background-image: url("images/a3.png"); background-size: 100% 100%; image-rendering: -webkit-optimize-contrast;}
+.item:nth-child(2) {background-image: url("images/a2.png");background-size: 100% 100%;image-rendering: -webkit-optimize-contrast;}
+.item:nth-child(3) {background-image: url("images/a4.png");background-size: 100% 100%;image-rendering: -webkit-optimize-contrast;}
+
+@media screen and (max-width: 500px) {
+  .item:nth-child(1) {background-image: url("images/a3.png"); background-size: 100% 100%; image-rendering: -webkit-optimize-contrast;}
+  .item:nth-child(2) {background-image: url("images/a2.png");background-size: 100% 100%;image-rendering: -webkit-optimize-contrast;}
+  .item:nth-child(3) {background-image: url("images/a4.png");background-size: 100% 100%;image-rendering: -webkit-optimize-contrast;}
+}
+
+.button-box {
+  text-align:center;
+  padding: 14px 0;
+}
+
+.button-box a {
+  text-decoration: none;
+  color: #fff;
+  display: inline-block;
+  background-color: #585858;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  line-height:40px;
+  text-align:center;
+  font-weight:bold;
+  margin-right: 10px;
+}
+
+a:last-child {
+  margin-right: 0px;
+}
+
+/*달력*/
+#calendar {
+  width: 350px;
+  height: 240px;
+  margin: 0 auto;
+  font-size: 10px;
+}
+.fc-toolbar {
+  font-size: .9em;
+}
+.fc-toolbar h2 {
+  font-size: 10px;
+  white-space: normal !important;
+}
+/* click +2 more for popup */
+.fc-more-cell a {
+  display: block;
+  width: 85%;
+  margin: 1px auto 0 auto;
+  border-radius: 3px;
+  background: grey;
+  color: transparent;
+  overflow: hidden;
+  height: 4px;
+}
+.fc-more-popover {
+  width: 100px;
+}
+.fc-view-month .fc-event, .fc-view-agendaWeek .fc-event, .fc-content {
+  font-size: 0;
+  overflow: hidden;
+  height: 2px;
+}
+.fc-event-vert {
+  font-size: 0;
+  overflow: hidden;
+  width: 2px !important;
+}
+
+.fc-button-content {
+  padding: 0;
+}
+
+@media screen and (max-width: 500px) {
+  #calendar {
+    width: 240px;
+    margin: 0 auto;
+    font-size: 10px;
+  }
+}
